@@ -1,0 +1,14 @@
+
+[
+    {
+        "symbol": "XLU",
+        "components": [
+                "NEE",
+                "DUK",
+                "SO", "D", "EXC", "AEP", "SRE", "XEL","PEG","WEC","ES","ED","AWK","EIX","DTE"
+        ]
+    },
+    { "symbol": "XLC", "components": ["FB","GOOGL","GOOG","T","ATVI","VZ","CMCSA","CHTR","DIS","TMUS","EA","NFLX","MTCH","TWTR","TTWO"] },
+    { "symbol": "XLRE", "components" : []}
+
+]

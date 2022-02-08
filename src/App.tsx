@@ -1,24 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+
+
+import  QuoteList  from './lib/iex_quotes';
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
+import sectorsInfo from './data/sectors.json';
+import { SectorData } from './types';
+
+
+
+
 
 function App() {
+  console.log("App sectords:%o", sectorsInfo);
+  const data : SectorData[] = sectorsInfo;
+  const symbols = data.map(sector => sector.symbol);
+  console.log("App symbols:%o", symbols);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+           IEX Demo
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        <div><QuoteList dataMap={data} symbols={symbols} quotes={[]} stats={[]}  /></div>
       </header>
+      <footer className="App-footer">
+        <div><a href="https://iexcloud.io">Data provided by IEX Cloud</a></div>
+      </footer>
     </div>
   );
 }

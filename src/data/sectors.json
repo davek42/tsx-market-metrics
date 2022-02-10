@@ -1,14 +1,14 @@
 
 [
-    {
-        "symbol": "XLU",
-        "components": [
-                "NEE",
-                "DUK",
-                "SO", "D", "EXC", "AEP", "SRE", "XEL","PEG","WEC","ES","ED","AWK","EIX","DTE"
-        ]
-    },
-    { "symbol": "XLC", "components": ["FB","GOOGL","GOOG","T","ATVI","VZ","CMCSA","CHTR","DIS","TMUS","EA","NFLX","MTCH","TWTR","TTWO"] },
-    { "symbol": "XLRE", "components" : []}
+    { "symbol": "XLU", "components":["NEE","DUK","SO","D","AEP","SRE","EXC","XEL","PEG","ED","ES","WEC","AWK","EIX","DTE","FE","AEE","ETR","PPL","CMS","CNP","CEG","AES","EVRG","LNT","ATO","NI","NRG","PNW" ] },
+    { "symbol": "XLC", "components":["FB","GOOGL","GOOG","TMUS","ATVI","T","VZ","CMCSA","CHTR","DIS","NFLX","EA","MTCH","TWTR","VIAC","TTWO","OMC","LYV","IPG","FOXA","LUMN","NWSA","DISCK","DISH","FOX","DISCA","NWS"]},
+    { "symbol": "XLRE","components":["PLD","AMT","CCI","EQIX","PSA","SPG","DLR","O","WEL","CBRE","SBAC","AVB","WY","EQR","EXR","ARE","MAA","DRE","ESS","VTR","PEAK","UDR","BXP","KIM","HST","IRM","REG","FRT","VNO","",""]},
+    { "symbol": "XLI", "components":["UPS","UNP","RTX","HON","BA","DE","GE","CAT","LMT","MMM","CSX","NSC","ITW","ETN","FDX","EMR","NOC","WM","GD","JCI","ROP","INFO","LHX","CARR","PH","TT","OTIS","TDG","CTAS","ROK","PCAR","CMI","VRSK","AME","FAST","ODFL","EFX","CPRT","DAL","LUV","SWK","RSG","DOV","FTV","URI","IR","GWW","EXPD","GNRC","WAB","XYL","J","JBHT","TXT","UAL","IEX","PWR","MAS","RHI","HWM","FBHS","LDOS","AAL","CHRW","SNA","ALLE","PNR","AOS","HII","ALK","ROL","NLSN"]},
+    { "symbol": "XLV", "components":["UNH","JNJ","PFE","ABBV","TMO","ABT","MRK","LLY","DHR","BMY","MDT","CVS","AMGN","ANTM","ISRG","ZTS","SYK","BDX","GILD","CI","EW","REGN","BSX","VRTX","HCA","MRNA","ILMN","HUM","CNC","IQV","IDXX","BAX","A","DXCM","MCK","ALGN","RMD","MTD","BIIB","WST","CERN","LH","ZBH","PKI","STE","ABC","WAT","COO","HOLX","VTRS","CTLT","CRL","DGX","TECH","TFX","CAH","ABMD","BIO","INCY","XRAY","HSIC","UHS","OGN","DVA"]},
+    { "symbol": "XLF", "components":["BRK.B","JPM","BAC","WFC","MS","SCHW","C","GS","AXP","BLK","SPGI","CB","CME","PNC","TFC","USB","MMC","ICE","COF","AON","PGR","MCO","AIG","MET","BK","MSCI","PRU","TRV","AFL","SIVB","STT","DFS","ALL","AMP","TROW","FITB","AJG","FRC","WTW","NTRS","KEY","HIG","SYF","RF","CFG","MTB","HBAN","RJF","NDAQ","SBNY","PFG","CINF","BRO","FDS","MKTX","CMA","CBOE","WRB","LNC","L","ZION","RE","GL","AIZ","PBCT","BEN","IVZ"]},
+    { "symbol": "XLY", "components":["AMZN","TSLA","MCD","NKE","HD","LOW","SBUX","BKNG","TGT","TJX","GM","F","DG","MAR","CMG","ORLY","HLT","AZO","EBAY","APTV","YUM","ROST","DLTR","DHI","EXPE","LEN","TSCO","BBY","VFC","ULTA","RCL","GRMN","DRI","MGM","GPC","CCL","POOL","ETSY","CZR","KMX","NVR","DPZ","BBWI","LVS","LKQ","AAP","PHM","WHR","HAS","TPR","BWA","WYNN","NCLH","MHK","NWL","PENN","PVH","RL","UAA","UA"]},
+    { "symbol": "XLK", "components":["AAPL","MSFT","NVDA","V","MA","AVGO","ADBE","CSCO","ACN","CRM","QCOM","INTC","INTU","TXN","AMD","PYPL","ORCL","AMAT","IBM","NOW","MU","ADI","ADP","LRCX","FIS","FISV","KLAC","XLNX","NXPI","ADSK","SNPS","TEL","CTSH","APH","FTNT","HPQ","MCHP","CDNS","GPN","MSI","PAYX","GLW","KEYS","ANSS","ANET","EPAM","ZBRA","CDW","IT","SWKS","STX","HPE","ENPH","VRSN","NTAP","FLT","TDY","TYL","TER","AKAM","964WKM90","MPWR","TRMB","NLOK","BR","PAYC","WDC","QRVO","SEDG","JKHY","CTXS","PTC","FFIV","JNPR","CDAY","DXC","IPGP"]},
+    { "symbol": "XLB", "components":["LIN","SHW","FCX","APD","NEM","ECL","DOW","DD","CTVA","PPG","NUE","IFF","BLL","ALB","LYB","VMC","MLM","IP","AMCR","CE","MOS","EMN","CF","AVY","FMC","PKG","WRK","SEE"]},
+    { "symbol": "XLE", "components":["XOM","CVX","EOG","COP","SLB","PXD","MPC","PSX","WMB","VLO","OXY","KMI","DVN","HAL","OKE","HES","BKR","FANG","CTRA","MRO","APA"]}
 
 ]

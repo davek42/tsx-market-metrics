@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import { QuoteListProps } from '../types';
 import { QuoteListState } from '../types';
 import { SectorData } from '../types';
+import { MiniChart } from "react-ts-tradingview-widgets";
 
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -62,6 +63,7 @@ class Quote extends Component <QuoteProps,{}> {
         <td>{formatChangePercent(this.props.data.stats.month3ChangePercent)}</td>
         <td>{formatQuote(this.props.data.stats.day50MovingAvg)}</td>
         <td>{formatQuote(this.props.data.stats.day200MovingAvg)}</td>
+        <td><MiniChart  symbol={sym} colorTheme="dark" dateRange="1M" ></MiniChart></td>
         </tr>
     );
   }
@@ -266,6 +268,7 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
                   <th>3 month Change %</th>
                   <th>50  MA</th>
                   <th>200 MA</th>
+                  <th>Chart</th>
                 </tr>
               </thead>
               <tbody>

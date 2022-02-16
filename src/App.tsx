@@ -21,9 +21,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-           IEX Demo
-        </p>
+        <p><a href='/'>IEX Demo</a></p>
         
         <div><QuoteList dataMap={data} symbols={symbols} quotes={[]} stats={[]}  /></div>
       </header>

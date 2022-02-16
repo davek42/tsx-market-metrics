@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component} from 'react';
 import { Row  } from "react-bootstrap";
 //import { Col  } from "react-bootstrap";
 import { Container } from "react-bootstrap";
@@ -60,6 +60,8 @@ class Quote extends Component <QuoteProps,{}> {
         <td>{formatChangePercent(this.props.data.stats.day5ChangePercent)}</td>
         <td>{formatChangePercent(this.props.data.stats.day30ChangePercent)}</td>
         <td>{formatChangePercent(this.props.data.stats.month3ChangePercent)}</td>
+        <td>{formatQuote(this.props.data.stats.day50MovingAvg)}</td>
+        <td>{formatQuote(this.props.data.stats.day200MovingAvg)}</td>
         </tr>
     );
   }
@@ -80,6 +82,7 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
     console.log("QL dataMap:%o", props.dataMap);
 
     this.state = {
+      level: 0,
       quotes: [],
       stats: [],
       dataMap : props.dataMap,
@@ -89,6 +92,7 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
   }
 
   state:Readonly<QuoteListState> = {
+    level: 0,
     quotes: [],
     stats: [],
     symbols: [],
@@ -122,6 +126,11 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
     return url;
   }
 
+  buildFinvizUrl(symbol:string) {
+    let url = `https://finviz.com/quote.ashx?t=${symbol}`;
+    return url;
+  }
+
   getQuotes() {
     const symbols = this.state.symbols;
     console.log("getQuotes:%o", symbols);
@@ -129,7 +138,9 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
     let quote_qfilters = ['symbol','latestPrice', 'change', 'changePercent', 'marketCap'];
     let stat_filters = ['symbol','maxChangePercent', 'year5ChangePercent', 'year2ChangePercent', 'year1ChangePercent',
       'ytdChangePercent','month6ChangePercent','month3ChangePercent','month1ChangePercent',
-      'day30ChangePercent','day5ChangePercent'];
+      'day30ChangePercent','day5ChangePercent',
+      'day50MovingAvg','day200MovingAvg'];
+
     let filters = quote_qfilters.concat(stat_filters);
     let url = this.buildIEXUrl(symbols, filters);
 
@@ -164,13 +175,16 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
   // │       "month1ChangePercent": -0.02596303090165097,
   // │       "day30ChangePercent": -0.02292993630573259,
   // │       "day5ChangePercent": 0.027997021593447524
+  // │       "day200MovingAvg": 47.21,
+  // │       "day50MovingAvg": 47.91
   getStats() {
     const symbols: string[] = this.state.symbols;
     console.log("getStats:%o", symbols);
     if(symbols.length === 0) return;
     let filters = ['symbol','maxChangePercent', 'year5ChangePercent', 'year2ChangePercent', 'year1ChangePercent',
       'ytdChangePercent','month6ChangePercent','month3ChangePercent','month1ChangePercent',
-      'day30ChangePercent','day5ChangePercent'];
+      'day30ChangePercent','day5ChangePercent',
+      'day50MovingAvg','day200MovingAvg'];
     let url = this.buildStatUrl(symbols, filters);
 
     fetch(url).then(response => response.json()).then(json => {
@@ -209,21 +223,29 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
   handleChange(symbol:string, event : React.ChangeEvent<HTMLInputElement>) {
     console.log("QL change. symbol:%o event:%o", symbol, event);
     const newSymbols = this.getComponent(symbol); 
+    const  level:number = this.state.level;
     console.log("newSymbols:%o", newSymbols);
 
-    //this.setState({ symbols: newSymbols }); 
-    this.setState({ symbols: newSymbols }, () => {
-      console.log("state.symbols  :%o", this.state.symbols);
-      this.getQuotes();
-    });
-    //this.forceUpdate();
+    switch(level) {
+      case 0:
+        this.setState({ symbols: newSymbols, level: 1 }, () => {
+          console.log("state.symbols  :%o", this.state.symbols);
+          this.getQuotes();
+        });
+        break;
+      case 1:
+        let url = this.buildFinvizUrl(symbol);
+        window.open(url, '_blank');
+        break;
+      default:
+        console.log("Unknown level:%o", level);
+    }
+
     console.log("Exit handleChange");
   }
 
   render() {
-      //return <Quote key={quote.symbol} {...quote} />;
     const qlist = this.state.quotes.map((quote:any) => {
-      //return <Quote onChange={this.handleChange} key={quote.symbol} symbol={quote.symbol} latestPrice={quote.latestPrice} change={quote.change}  changePercent={quote.changePercent}/>;
       return <Quote onChange={this.handleChange} key={quote.symbol} symbol={quote.symbol} data={quote} />;
     });
 
@@ -242,7 +264,8 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
                   <th>5 day Change %</th>
                   <th>30 day Change %</th>
                   <th>3 month Change %</th>
-
+                  <th>50  MA</th>
+                  <th>200 MA</th>
                 </tr>
               </thead>
               <tbody>

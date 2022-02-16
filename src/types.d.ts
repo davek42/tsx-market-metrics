@@ -18,6 +18,7 @@ interface QuoteListProps {
 }
   
 interface QuoteListState {
+    level: number;
     quotes: any;
     stats: any;
     symbols: string[];

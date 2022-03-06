@@ -52,6 +52,7 @@ class Quote extends Component <QuoteProps,{}> {
 
   render() {
     const sym = this.props.symbol;
+    let showChart = false;
     return (
         <tr >
         <td><div onClick={(e) => this.handleClick(sym,e)}>{sym}</div></td>
@@ -63,7 +64,7 @@ class Quote extends Component <QuoteProps,{}> {
         <td>{formatChangePercent(this.props.data.stats.month3ChangePercent)}</td>
         <td>{formatQuote(this.props.data.stats.day50MovingAvg)}</td>
         <td>{formatQuote(this.props.data.stats.day200MovingAvg)}</td>
-        <td><MiniChart  symbol={sym} colorTheme="dark" dateRange="1M" ></MiniChart></td>
+        <td className="table-column-hide"><{showChart ? MiniChart  symbol={sym} colorTheme="dark" dateRange="1M" ></MiniChart> : ''}</td>
         </tr>
     );
   }
@@ -134,7 +135,8 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
   }
 
   getQuotes() {
-    const symbols = this.state.symbols;
+    const indexes = ['SPY','QQQ'];
+    const symbols = indexes.concat(this.state.symbols);
     console.log("getQuotes:%o", symbols);
     if(symbols.length === 0) return;
     let quote_qfilters = ['symbol','latestPrice', 'change', 'changePercent', 'marketCap'];
@@ -204,6 +206,10 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
     }).catch(error => {
       console.log("error:%o", error);
     });
+    // calc additional stats
+    let stats = this.state.stats;
+    let quotes = this.state.quotes;
+
     console.log("stats:%o", this.state.stats);
   }
 
@@ -254,7 +260,6 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
     return (
       <div>
       <Container>
-          <Row>Quotes</Row>
           <Row>
             <table className="table table-dark table-bordered">
               <thead>
@@ -268,7 +273,7 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
                   <th>3 month Change %</th>
                   <th>50  MA</th>
                   <th>200 MA</th>
-                  <th>Chart</th>
+                  <th className="table-column-hide">Chart</th>
                 </tr>
               </thead>
               <tbody>

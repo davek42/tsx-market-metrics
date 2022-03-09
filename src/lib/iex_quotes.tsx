@@ -153,11 +153,16 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
       symbols.forEach((symbol:string) => {
         //var data = json[symbol].quote;
         var data = json[symbol];
-        data.symbol = symbol;
-        console.log("data:%o", data);
-        let price = data.latestPrice;
-        console.log("symol:%o price: %o ", symbol, price);
-        qq.push(data);
+        if(data) {
+          data.symbol = symbol;
+          console.log("data:%o", data);
+          let price = data.latestPrice;
+          console.log("symol:%o price: %o ", symbol, price);
+          qq.push(data);
+        }
+        else {
+          console.log("no data for:%o", symbol);
+        }
       });
       console.log("qq:%o", qq);
       this.setState({ quotes: qq });

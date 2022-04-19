@@ -154,8 +154,8 @@ class QuoteList extends Component<QuoteListProps,QuoteListState> {
         //var data = json[symbol].quote;
         var data = json[symbol];
         if(data) {
+          console.log("symbol:%o data:%o",symbol, data);
           data.symbol = symbol;
-          console.log("data:%o", data);
           let price = data.latestPrice;
           console.log("symol:%o price: %o ", symbol, price);
           qq.push(data);
